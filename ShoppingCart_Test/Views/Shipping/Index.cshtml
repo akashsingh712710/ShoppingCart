@@ -1,0 +1,75 @@
+﻿@model ShoppingCart_Test.Models.ShippingBillingViewModel
+
+@{
+    ViewData["Title"] = "Shipping and Billing";
+}
+
+<h1>Shipping and Billing</h1>
+
+<form asp-action="Index" method="post">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="BillingAddress.FirstName"></label>
+        <input asp-for="BillingAddress.FirstName" class="form-control" />
+        <span asp-validation-for="BillingAddress.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.LastName"></label>
+        <input asp-for="BillingAddress.LastName" class="form-control" />
+        <span asp-validation-for="BillingAddress.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.AddressLine1"></label>
+        <input asp-for="BillingAddress.AddressLine1" class="form-control" />
+        <span asp-validation-for="BillingAddress.AddressLine1" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.AddressLine2"></label>
+        <input asp-for="BillingAddress.AddressLine2" class="form-control" />
+        <span asp-validation-for="BillingAddress.AddressLine2" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.City"></label>
+        <input asp-for="BillingAddress.City" class="form-control" />
+        <span asp-validation-for="BillingAddress.City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.State"></label>
+        <input asp-for="BillingAddress.State" class="form-control" />
+        <span asp-validation-for="BillingAddress.State" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.ZipCode"></label>
+        <input asp-for="BillingAddress.ZipCode" class="form-control" />
+        <span asp-validation-for="BillingAddress.ZipCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.Country"></label>
+        <input asp-for="BillingAddress.Country" class="form-control" />
+        <span asp-validation-for="BillingAddress.Country" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BillingAddress.PhoneNumber"></label>
+        <input asp-for="BillingAddress.PhoneNumber" class="form-control" />
+        <span asp-validation-for="BillingAddress.PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedShippingMethodId">Shipping Method</label>
+        <select asp-for="SelectedShippingMethodId" asp-items="@(new SelectList(Model.ShippingMethods, "Id", "MethodName"))" class="form-control">
+            <option value="">Select a shipping method</option>
+        </select>
+        <span asp-validation-for="SelectedShippingMethodId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>
+
+<a asp-action="Index" asp-controller="Products" class="btn btn-secondary">Continue Shopping</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

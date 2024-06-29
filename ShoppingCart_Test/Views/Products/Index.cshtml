@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Entities.Product>
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Index" asp-controller="Cart" class="btn btn-success">View Cart</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Manufacturer</th>
+            <th>ShippingNo</th>
+            <th>SerialNo</th>
+            <th>BatchNo</th>
+            <th>MRP</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.ProductCode</td>
+                <td>@product.ProductName</td>
+                <td>@product.Manufacturer</td>
+                <td>@product.ShippingNo</td>
+                <td>@product.SerialNo</td>
+                <td>@product.BatchNo</td>
+                <td>@product.MRP</td>
+                <td>@product.Quantity</td>
+                <td>
+                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@product.Id">Add to Cart</a> |
+                    <a asp-action="Edit" asp-route-id="@product.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
